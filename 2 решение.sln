@@ -23,3 +23,91 @@ Global
 		SolutionGuid = {5D572216-B234-41A4-8E3A-3A1D21483518}
 	EndGlobalSection
 EndGlobal
+using System;
+
+namespace _2_решение
+{
+    internal class Example
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Введите a --> ");
+            int a = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Введите b --> ");
+            int b = Convert.ToInt32(Console.ReadLine());
+            int d = a;
+            int c = b;
+            int g = 0;
+            int q = 0;
+            int t = 0;
+            while (d != 0)
+            {
+                d /= 10;
+                g++;
+            }
+            while (c != 0)
+            {
+                c /= 10;
+                t++;
+            }
+            if (t == g)
+            {
+                int[] mas = new int[g];
+                int[] mas1 = new int[t];
+                while (a != 0)
+                {
+                    for (int j = 0; j < mas1.Length; j++)
+                    {
+                        mas[j] = a % 10;
+                        a /= 10;
+                        Console.WriteLine(mas[j]);
+                    }
+                }
+                while (b != 0)
+                {
+                    for (int l = 0; l < mas1.Length; l++)
+                    {
+                        mas1[l] = b % 10;
+                        b /= 10;
+                        Console.WriteLine(mas1[l]);
+                    }
+                }
+                int[] ww = new int[] { 6, 7, 8 };
+                Console.WriteLine(("[{0}]", string.Join(", ", mas))+" "+ ("[{1}]", string.Join(", ", mas1)));
+                for (int j = 0; j < mas.Length; j++)
+                {
+                    for (int l = 0; l < mas1.Length; l++)
+                    {
+                        if (mas[j] == mas1[l])
+                        {
+                            int m = l;
+                            int numToRemove = m;
+                            int numIndex = Array.IndexOf(mas1, numToRemove);
+                            mas1 = mas1.Where((val, idx) => idx != numIndex).ToArray();
+                            q++;
+                            
+                        }
+
+                    }
+                    
+                }
+                if (q == mas.Length)
+                {
+
+
+                    Console.WriteLine("Одинаково");
+                }
+                else
+                {
+                    Console.WriteLine("Не могут сравниваться, т.к имееют разное количество цифр одинаковых");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Не могут сравниваться, т.к имееют разное количество цифр");
+            }
+
+        }   
+    }
+    
+}
